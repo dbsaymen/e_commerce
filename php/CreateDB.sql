@@ -1,19 +1,19 @@
 CREATE TABLE provider(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(255),
     description VARCHAR(255),
     img_url VARCHAR(255)
 );
 
 CREATE TABLE category(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(255),
     parent_id INT,
     FOREIGN KEY(parent_id) REFERENCES category(id)
 );
 
 CREATE TABLE products(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(255),
     price FLOAT,
     rating FLOAT,
@@ -25,26 +25,26 @@ CREATE TABLE products(
     color VARCHAR(15),
     details VARCHAR(255),
     category_id INT,
+    active BOOLEAN DEFAULT TRUE,
     foreign key (provider) references provider(id),
     foreign key (category_id) references category(id)
 );
-
-CREATE TABLE category(
-    id INT PRIMARY KEY NOT NULL,
-    NAME VARCHAR(255),
-    parent_id INT,
-    FOREIGN KEY(parent_id) REFERENCES category(id)
+CREATE TABLE sales(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    product_id INT,
+    discount_percent INT,
+    FOREIGN KEY(product_id) REFERENCES products(id)
 );
 
 CREATE TABLE review(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     TEXT VARCHAR(255),
     product_id INT,
     FOREIGN KEY(product_id) REFERENCES products(id)
 );
 
 CREATE TABLE size(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     size_txt VARCHAR(255),
     stock INT,
     product_id INT,
@@ -52,14 +52,14 @@ CREATE TABLE size(
 );
 
 CREATE TABLE users(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     email VARCHAR(255),
     PASSWORD VARCHAR(255),
     wish_list VARCHAR(255)
 ); CREATE TABLE admin(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     email VARCHAR(255),
