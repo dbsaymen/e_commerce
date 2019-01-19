@@ -12,7 +12,7 @@ if(isset($_POST["uname"]) && isset($_POST["psw"])){
     $auth=authentification($_POST['uname'],$_POST['psw']);
     if($auth["auth"]){
         $_SESSION["info"]=$auth[0];
-        header('Location: admin_panel.php');
+        header('Location: adminPanel/index.php');
     }else{
         session_unset();
         $_SESSION = array();
