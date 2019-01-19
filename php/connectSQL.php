@@ -7,7 +7,7 @@
  */
 class myDataBase{
     private $host = "localhost";
-    private $db_name = "store";
+    private $db_name = "ecommerce";
     private $username = "root";
     private $password = "";
 

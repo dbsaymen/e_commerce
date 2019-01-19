@@ -6,7 +6,7 @@ include 'connectSQL.php';
  function getProducts(){
      $Mysql = new myDataBase();
      $bdd= $Mysql->connect();
-     $sql = "SELECT * FROM mystore2";
+     $sql = "SELECT * FROM products";
      $resultat = mysqli_query($bdd, $sql);
 
      $donnee=mysqli_fetch_all($resultat);
@@ -18,7 +18,7 @@ include 'connectSQL.php';
 function getUsers(){
     $Mysql = new myDataBase();
     $bdd= $Mysql->connect();
-    $sql = "SELECT * FROM mystore2";
+    $sql = "SELECT * FROM users";
     $resultat = mysqli_query($bdd, $sql);
 
     $donnee=mysqli_fetch_all($resultat);
