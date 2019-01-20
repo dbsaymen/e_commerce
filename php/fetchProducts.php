@@ -1,6 +1,6 @@
 <?php
 
-include 'connectSQL.php';
+
 
 
  function getProducts(){

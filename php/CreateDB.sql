@@ -6,8 +6,7 @@ CREATE TABLE provider(
 ); CREATE TABLE category(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(255),
-    parent_id INT,
-    FOREIGN KEY(parent_id) REFERENCES category(id)
+    parent_id INT
 ); CREATE TABLE products(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(255),
@@ -113,7 +112,13 @@ DROP TABLE if exists
 Insert in Tables:
 
 INSERT INTO `admin`(`first_name`, `last_name`, `email`, `PASSWORD`) VALUES ("admin","admin","admin","admin")
-
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (1,"women",0);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (2,"men",0);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (3,"kids",0);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (4,"gadgets",1);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (5,"glasses",4);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (6,"watch",5);
+INSERT INTO `category`(`id`, `NAME`, `parent_id`) VALUES (7,"shoes",2);
  */
 
 /*ALTER TABLE

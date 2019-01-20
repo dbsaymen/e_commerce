@@ -6,10 +6,10 @@
  * Time: 08:20
  */
 
-include 'connectSQL.php';
 
 
-function getCategoryName(){
+
+/*function getCategoryName(){
     $Mysql = new myDataBase();
     $bdd= $Mysql->connect();
     $sql = "SELECT * FROM category";
@@ -19,4 +19,4 @@ function getCategoryName(){
     header('Content-Type: application/json');
     echo json_encode($donnee);
     mysqli_close($bdd);
-}
+}*/

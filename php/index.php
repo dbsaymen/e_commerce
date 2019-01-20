@@ -1,6 +1,9 @@
 <?php
+include 'connectSQL.php';
 include 'fetchProducts.php';
-include 'fetchViewData.php.php';
+include 'fetchViewData.php';
+include 'fetchCategory.php';
+
 $baseUrl="http://localhost/shop/php/index.php?=";
 $requestUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $requestString = substr($requestUrl, strlen($baseUrl));
@@ -13,5 +16,10 @@ if($urlParams[0]=="users"){
     getUsers();
 }
 if($urlParams[0]=="categoryNames"){
-    getCategoryName();
+    arrangeCategory();
+}
+if($urlParams[0]=="Deletcategory"){
+    if(isset($urlParams[1])){
+        DeleteCategory((int)$urlParams[1]);
+    }
 }
