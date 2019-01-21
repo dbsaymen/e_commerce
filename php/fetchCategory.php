@@ -21,15 +21,15 @@ function arrangeCategory(){
   If sub category choose the main from list or cheak the box!
 </div>";
 
-    $data=$data."<input type=\"text\" class=\"form-control\" placeholder=\"Category Name\" aria-label=\"Category Name:\" aria-describedby=\"button-addon2\" style=\"
+    $data=$data."<input id=\"newCategoryName\" type=\"text\" class=\"form-control\" placeholder=\"Category Name\" aria-label=\"Category Name:\" aria-describedby=\"button-addon2\" style=\"
     display: inline-block;
     width: 80%;
 \">
 <button class=\"btn btn-outline-secondary\" type=\"button\" id=\"button-addon2\" style=\"
     display: inline-block;
     width: 18%;
-\" onclick='AddCategory()'>Add +</button>";
-    $data=$data."<input type=\"checkbox\" aria-label=\"Checkbox for following text input\"> <span>Main Category!</span>";
+\" onclick='AddCategory()'>Add +</button></br>";
+    $data=$data."<input id=\"isParentCategory\" type=\"checkbox\" aria-label=\"Checkbox for following text input\"> <span>Main Category!</span>";
     $data=$data."</form>";
     echo $data;
 }
@@ -54,6 +54,28 @@ function getCategory($id,&$data,$i){
 function DeleteCategory($id){
     $Mysql = new myDataBase();
     $bdd= $Mysql->connect();
-    $sql = "DELETE FROM `category` WHERE `category`.`id` = $id";
-    $resultat = mysqli_query($bdd, $sql);
+    $sql = "select * from category where parent_id=$id";
+    $result=mysqli_query($bdd, $sql);
+    $data=mysqli_fetch_all($result);
+    if(count($data)==0){
+        $sql = "select * from products where category_id=$id";
+        $result=mysqli_query($bdd, $sql);
+        $data=mysqli_fetch_all($result);
+        if(count($data)==0){
+            $sql = "DELETE FROM `category` WHERE `category`.`id` = $id";
+            mysqli_query($bdd, $sql);
+            echo("success");
+        }else{
+            echo("fail");
+        }
+    }else{
+        echo("fail");
+    }
+}
+function AddCategory($name,$parentID){
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    $sql = "INSERT INTO `category`(`NAME`, `parent_id`) VALUES (\"$name\",$parentID)";
+    echo($sql);
+    mysqli_query($bdd, $sql);
 }

@@ -431,6 +431,15 @@ textarea {
 canvas {
   max-width: 100%; }
 
+
+.MainPanel{
+  overflow-y: scroll;
+}
+#managerArea{
+  margin-top: 100px;
+}
+
+
 .btn {
   border-radius: 3px; }
 

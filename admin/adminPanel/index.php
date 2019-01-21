@@ -87,10 +87,13 @@ if(!isset($_SESSION['info'])){
                 </li>
                 <li class="menu-title"><?= $_SESSION['info'][1]." ".$_SESSION['info'][2] ?></li><!-- /.menu-title -->
                 <li>
-                    <a id="ProductManager" href="#"> <i class="menu-icon fa fa-tasks"></i>Products Manager</a>
+                    <a id="ProductManager" href="#" onclick="ProductManagerBtn()"> <i class="menu-icon fa fa-tasks"></i>Products Manager</a>
                 </li>
                 <li>
                     <a id="UsersManager" href="#"> <i class="menu-icon fa fa-group"></i>Users Manager </a>
+                </li>
+                <li>
+                    <a id="UsersManager" href="#" onclick="ProvidersManager()"> <i class="menu-icon fa fa-group"></i>Providers Manager</a>
                 </li>
                 <li>
                     <a id="CategoryManager" href="#" onclick="CategoryManagerBtn()"> <i class="menu-icon fa fa-code-fork"></i>Category Manager </a>
@@ -290,13 +293,16 @@ if(!isset($_SESSION['info'])){
             </div>
             <!-- /Widgets -->
             <!-- ManagerArea -->
-            <div class="row">
-                <class class="col-4"></class>
-                <div id="managerArea" class="col-4">
-                </div>
-                <class class="col-4"></class>
+            <div class="MainPanel">
+                <div class="row">
 
+                    <div id="managerArea" class="col-12 col-xs-12 col-sm-12 col-lg-12">
+                    </div>
+
+
+                </div>
             </div>
+
             <!-- /ManagerArea -->
         </div>
         <!-- .animated -->
