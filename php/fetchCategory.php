@@ -33,6 +33,15 @@ function arrangeCategory(){
     $data=$data."</form>";
     echo $data;
 }
+function arrangeCategoryToSelect(){
+    $data="<form><select class='categorys custom-select' onchange='selectedCategoryForProduct(this.value)' style=\"
+    display: inline-block;
+    width: 82%;
+\">";
+    getCategory(0,$data,0);
+    $data=$data."</select>";
+    echo $data;
+}
 
 function getCategory($id,&$data,$i){
     $Mysql = new myDataBase();

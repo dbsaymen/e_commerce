@@ -10,7 +10,7 @@ function getXMLHttpRequest() {
     }
     return xhr;
 }
-function CategoryManagerBtn($id){
+function CategoryManagerBtn(){
     var xhr=getXMLHttpRequest();
     xhr.open("GET","http://localhost/shop/php/index.php?=categoryNames/",true);
     xhr.send();
@@ -21,9 +21,32 @@ function CategoryManagerBtn($id){
             selectedCat= parseInt(document.getElementsByClassName("categorys").item(0).item(0).value);
         }
     };
-
+}
+function CategorySelect(){
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=categorySelect/",true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            var area= document.getElementById("choose_category");
+            area.innerHTML=xhr.responseText;
+            document.getElementById("Category-input").value=parseInt(document.getElementsByClassName("categorys").item(0).item(0).value);
+        }
+    };
 }
 
+function ProviderSelect(){
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=providerSelect/",true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            var area= document.getElementById("choose_provider");
+            area.innerHTML=xhr.responseText;
+            document.getElementById("Provider-input").value=parseInt(document.getElementsByClassName("providers").item(0).item(0).value);
+        }
+    };
+}
 function DeleteCategory() {
     if(confirm("Delete Category !")){
         var xhr=getXMLHttpRequest();
@@ -93,36 +116,33 @@ function ProvidersManager(){
         }
     };
 }
-function AddProvider() {
-
-
-    var file=document.getElementById("file-input").files[0];
-    var descriptions=document.getElementById("description-input").value;
-    var name=document.getElementById("Name-input").value;
-    let formData = new FormData();
-    let prov = {description:descriptions, names:name};
-    formData.append("photo", file);
-
-    var xhr=getXMLHttpRequest();
-    xhr.open("POST","http://localhost/shop/php/index.php?=ProviderPage",true);
-    xhr.setRequestHeader("content-type", "multipart/form-data");
-    xhr.send(formData);
-    xhr.onreadystatechange = function () {
-        if(xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText);
-        }
-    };
-
-}
 
 function selectedCategory(val) {
     this.selectedCat=val;
-    console.log(this.selectedCat);
+
+
+}
+function selectedCategoryForProduct(val) {
+    var area= document.getElementById("Category-input");
+    area.value=val;
+
+}
+function selectedProviderForProduct(val) {
+    var area= document.getElementById("Provider-input");
+    area.value=val;
 
 }
 
+function showAddProduct(){
+    document.getElementById("addProductForm").style.display="block";
+    CategorySelect();
+    ProviderSelect();
+}
 function showAddProviderForm(){
     document.getElementById("addProviderForm").style.display="block"
+}
+function hideAddProductForm(){
+    document.getElementById("addProductForm").style.display="none"
 }
 function hideAddProviderForm(){
     document.getElementById("addProviderForm").style.display="none"

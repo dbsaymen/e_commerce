@@ -16,8 +16,6 @@ CREATE TABLE provider(
     provider INT,
     description VARCHAR(255),
     img_url VARCHAR(255),
-    size VARCHAR(3),
-    color VARCHAR(15),
     details VARCHAR(255),
     category_id INT,
     active BOOLEAN DEFAULT TRUE,
@@ -37,6 +35,7 @@ CREATE TABLE provider(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     size_txt VARCHAR(255),
     stock INT,
+    color VARCHAR(255),
     product_id INT,
     FOREIGN KEY(product_id) REFERENCES products(id)
 );CREATE TABLE users(
@@ -45,7 +44,6 @@ CREATE TABLE provider(
     last_name VARCHAR(255),
     email VARCHAR(255),
     PASSWORD VARCHAR(255),
-    wish_list VARCHAR(255),
     country VARCHAR(255),
     active BOOLEAN DEFAULT TRUE
 );

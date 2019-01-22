@@ -8,7 +8,7 @@
 
 function getProviderPage(){
     $response="
-    <div class=\"col-lg-6\" style='display: none' id='addProviderForm'>
+    <div class=\"col-lg-6\" style='display: none; position: fixed;z-index: 999999;top: 20%;' id='addProviderForm'>
     <div class=\"card\">
     <form action=\"../../php/addProvider.php\" method=\"post\" enctype=\"multipart/form-data\" class=\"form-horizontal\">
         <div class=\"card-header\">
@@ -110,7 +110,22 @@ function getProviderPage(){
 
 
 
-function uploidImage(){
+function arrangeProviderToSelect(){
+    $data="<form><select class='providers custom-select' onchange='selectedProviderForProduct(this.value)' style=\"display: inline-block; width: 82%;\">";
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    $sql = "SELECT * FROM provider";
+    $resultat = mysqli_query($bdd, $sql);
+    $provider=mysqli_fetch_all($resultat);
+    if(count($provider)>0){
+        foreach ($provider as $prov) {
+            $data = $data . "<option value='$prov[0]'>";
+            $data=$data.$prov[1];
+            $data=$data."</option>";
+        }
+    }
+    $data=$data."</select>";
+    echo $data;
 
 
 }

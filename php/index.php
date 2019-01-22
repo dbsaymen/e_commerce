@@ -19,6 +19,12 @@ if($urlParams[0]=="users"){
 if($urlParams[0]=="categoryNames"){
     arrangeCategory();
 }
+if($urlParams[0]=="categorySelect"){
+    arrangeCategoryToSelect();
+}
+if($urlParams[0]=="providerSelect"){
+    arrangeProviderToSelect();
+}
 if($urlParams[0]=="DeletCategory"){
     if(isset($urlParams[1])){
         DeleteCategory((int)$urlParams[1]);
