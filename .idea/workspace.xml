@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9110b93d-9e17-4da1-9b0c-9b7974a10355" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/php/addProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adminPanel/assets/js/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adminPanel/assets/js/nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adminPanel/ui-modals.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adminPanel/ui-modals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/CreateDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/php/CreateDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/fetchCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/fetchCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/fetchProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/fetchProducts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/fetchProviders.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/fetchProviders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/4a3gcJDiVl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/EKRW5GR84I.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/Tl9WzztXFZ.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/aoqLNVW3lt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/d1iZAF8ZNS.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/jnTdNVQNPT.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/uploads/téléchargement.jpg" beforeDir="false" />
-    </list>
+    <list default="true" id="9110b93d-9e17-4da1-9b0c-9b7974a10355" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,12 +301,12 @@
       <workItem from="1547910847218" duration="4113000" />
       <workItem from="1547927982718" duration="17365000" />
       <workItem from="1548001897369" duration="21614000" />
-      <workItem from="1548111201316" duration="10582000" />
+      <workItem from="1548111201316" duration="10907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75293000" />
+    <option name="totallyTimeSpent" value="75618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
