@@ -147,7 +147,20 @@ function hideAddProductForm(){
 function hideAddProviderForm(){
     document.getElementById("addProviderForm").style.display="none"
 }
-
+function updatadeActiveStatus(id){
+    var isChecked=1;
+    if(document.getElementById("opt"+id).checked){
+        isChecked=0
+    }
+    var xhr=getXMLHttpRequest();
+    xhr.open("POST","http://localhost/shop/php/index.php?=updateActiveStatus/"+id+"/"+isChecked,true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            alert("Updated!");
+        }
+    };
+}
 /*----------
 
 Screen Resolustion

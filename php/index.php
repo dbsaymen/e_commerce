@@ -42,5 +42,8 @@ if($urlParams[0]=="AddProvider"){
 if($urlParams[0]=="ProviderPage"){
     getProviderPage();
 
+}if($urlParams[0]=="updateActiveStatus"){
+
+    updateActiveStatus((int)$urlParams[2],(int)$urlParams[1]);
 }
 

@@ -4,11 +4,11 @@
 
 
  function getProducts(){
-     $response="<div class=\"col-lg-6\" style='display: none; position: fixed;z-index: 999999;top: 20%;' id='addProductForm'>
-    <div class=\"card\">
+     $response="<div class=\"modal fade col-lg-6\" id=\"addProductForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"scrollmodalLabel\" aria-hidden=\"true\">
+    <div class=\"card modal-dialog modal-lg\">
     <form action=\"../../php/addProduct.php\" method=\"post\" enctype=\"multipart/form-data\" class=\"form-horizontal\">
         <div class=\"card-header\">
-            <strong>Providers</strong> Manger<span style='float: right' onclick='hideAddProductForm()'><a href='#'>Hide</a></span>
+            <strong>Products</strong> Manger<span style='float: right' aria-hidden=\"true\"><a href='#'>Hide</a></span>
         </div>
         <div class=\"card-body card-block\">
                 <div class=\"row form-group\">
@@ -57,7 +57,7 @@
         </form>
     </div>
 </div>";
-     $response=$response."<div class=\"row\"><div class=\"col-md-4\" onclick='showAddProduct()'>
+     $response=$response."<div class=\"row\"><div class=\"col-md-4\" data-toggle=\"modal\" data-target=\"#addProductForm\">
     <aside class=\"profile-nav alt\">
         <section class=\"card \">
             <div class=\"card-header user-header alt bg-dark\" style=\"background-image: url('images/addProd.png'); background-repeat: no-repeat;background-size: cover;\" >
@@ -106,9 +106,15 @@
          $resultat1 = mysqli_query($bdd, $sql5);
          $review=mysqli_fetch_all($resultat1);
 
+         if($prod[10]>0){
+             $isActive="checked";
+         }else{
+             $isActive="";
+         }
 
 
-            $response=$response."<div class=\"col-md-4\" onclick='toDoFunction($prod[0])'>
+
+            $response=$response."<div class=\"col-md-4\">
     <aside class=\"profile-nav alt\">
         <section class=\"card\">
             <div class=\"card-header user-header alt bg-dark\">
@@ -141,17 +147,20 @@
                     <a href=\"#\"> <i class=\"fa fa-dollar\"></i>Color <span class=\"badge badge-primary pull-right\">0</span></a>
                 </li>
                 <li class=\"list-group-item\">
-                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>Sales <span class=\"badge badge-primary pull-right\">0</span></a>
-                </li>
-                <li class=\"list-group-item\">
                     <a href=\"#\"> <i class=\"fa fa-dollar\"></i>review <span class=\"badge badge-primary pull-right\">0</span></a>
                 </li>
                 <li class=\"list-group-item\">
-                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>active <span class=\"badge badge-primary pull-right\">0</span></a>
+                    <a href=\"#\"> <i class=\"fa fa-tasks\"></i> Active 
+                    <div class=\"material-switch pull-right\">
+                            <input id=\"opt$prod[0]\" type=\"checkbox\" $isActive />
+                            <label for=\"opt$prod[0]\" class=\"label-success\" onclick='updatadeActiveStatus($prod[0])'></label>
+                    </div>
+                    </a>
                 </li>
                 <li class=\"list-group-item\">
                     <a href=\"#\"> <i class=\"fa fa-tasks\"></i> stock <span class=\"badge badge-danger pull-right\">$prod[4]</span></a>
                 </li>
+                
             </ul>
         </section>
     </aside>
@@ -162,6 +171,11 @@
     echo $response;
      mysqli_close($bdd);
  }
-
+function updateActiveStatus($isActive,$id){
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    $sql="UPDATE `products` SET `active`=$isActive WHERE id=".$id;
+    mysqli_query($bdd, $sql);
+}
 
 ?>

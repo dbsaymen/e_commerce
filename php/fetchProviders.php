@@ -8,11 +8,11 @@
 
 function getProviderPage(){
     $response="
-    <div class=\"col-lg-6\" style='display: none; position: fixed;z-index: 999999;top: 20%;' id='addProviderForm'>
-    <div class=\"card\">
+    <div class=\"modal fade col-lg-6\"  id='addProviderForm' tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"scrollmodalLabel\" aria-hidden=\"true\">
+    <div class=\"card modal-dialog modal-lg\">
     <form action=\"../../php/addProvider.php\" method=\"post\" enctype=\"multipart/form-data\" class=\"form-horizontal\">
         <div class=\"card-header\">
-            <strong>Providers</strong> Manger<span style='float: right' onclick='hideAddProviderForm()'><a href='#'>Hide</a></span>
+            <strong>Providers</strong> Manger<span style='float: right' aria-hidden=\"true\"><a href='#'>Hide</a></span>
         </div>
         <div class=\"card-body card-block\">
                 <div class=\"row form-group\">
@@ -41,7 +41,7 @@ function getProviderPage(){
     </div>
 </div>
      ";
-    $response=$response."<div class=\"row\"><div class=\"col-md-4\" onclick='showAddProviderForm()'>
+    $response=$response."<div class=\"row\"><div class=\"col-md-4\" data-toggle=\"modal\" data-target=\"#addProviderForm\">
     <aside class=\"profile-nav alt\">
         <section class=\"card \">
             <div class=\"card-header user-header alt bg-dark\" style=\"background-image: url('images/addProd.png'); background-repeat: no-repeat;background-size: cover;\" >
