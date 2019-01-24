@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 22 jan. 2019 à 02:56
+-- Généré le :  jeu. 24 jan. 2019 à 19:44
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `email` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `PASSWORD` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `PASSWORD`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -74,7 +81,10 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `NAME`, `parent_id`) VALUES
 (1, 'phones & accessories', 0),
 (2, 'Men', 0),
-(4, 'Women', 0);
+(4, 'Women', 0),
+(5, 'Clothes', 2),
+(6, 'watchs', 4),
+(7, 'Shoes', 5);
 
 -- --------------------------------------------------------
 
@@ -293,7 +303,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `adress`
@@ -305,7 +315,7 @@ ALTER TABLE `adress`
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `orders`
