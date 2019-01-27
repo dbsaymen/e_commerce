@@ -7,15 +7,23 @@
  */
 
 function getProviderPage(){
+
     $response="
-    <div class=\"modal fade col-lg-6\"  id='addProviderForm' tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"scrollmodalLabel\" aria-hidden=\"true\">
-    <div class=\"card modal-dialog modal-lg\">
-    <form action=\"../../php/addProvider.php\" method=\"post\" enctype=\"multipart/form-data\" class=\"form-horizontal\">
-        <div class=\"card-header\">
-            <strong>Providers</strong> Manger<span style='float: right' aria-hidden=\"true\"><a href='#'>Hide</a></span>
-        </div>
-        <div class=\"card-body card-block\">
-                <div class=\"row form-group\">
+    <div class=\"modal fade\" id=\"scrollmodal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"scrollmodalLabel\" aria-hidden=\"true\">
+ 
+                <div class=\"modal-dialog modal-lg\" role=\"document\">
+                    <div class=\"modal-content\">
+                    <form action=\"../../php/addProvider.php\" method=\"post\" enctype=\"multipart/form-data\" class=\"form-horizontal\">
+                        <div class=\"modal-header\">
+                             <strong>Providers</strong> Manger
+                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                        </div>
+                        
+                        <div class=\"modal-body\">
+                            <div class=\"card-body card-block\">
+                            <div class=\"row form-group\">
                     <div class=\"col col-md-3\"><label for=\"text-input\" class=\" form-control-label\">Provider Name</label></div>
                     <div class=\"col-12 col-md-9\"><input type=\"text\" id=\"Name-input\" name=\"text-input\" placeholder=\"Name\" class=\"form-control\"><small class=\"form-text text-muted\">put the name of the company</small></div>
                 </div>
@@ -25,23 +33,32 @@ function getProviderPage(){
                 </div>
                 <div class=\"row form-group\">
                     <div class=\"col col-md-3\"><label for=\"file-input\" class=\" form-control-label\">Select Image</label></div>
-                    <div class=\"col-12 col-md-9\"><input type=\"file\" id=\"file-input\" name=\"file-input\" class=\"form-control-file\"></div>
+                    <div class=\"col-12 col-md-9\"><input type=\"file\" id=\"img-input\" name=\"img-input\" class=\"form-control-file\"></div>
                 </div>
-            
-        </div>
-        <div class=\"card-footer\">
-            <button type=\"submit\" class=\"btn btn-primary btn-sm\" >
-                <i class=\"fa fa-dot-circle-o\"></i> Submit
-            </button>
-            <button type=\"reset\" class=\"btn btn-danger btn-sm\">
-                <i class=\"fa fa-ban\"></i> Reset
-            </button>
-        </div>
-        </form>
-    </div>
-</div>
-     ";
-    $response=$response."<div class=\"row\"><div class=\"col-md-4\" data-toggle=\"modal\" data-target=\"#addProviderForm\">
+                       
+                </div>
+                        </div>
+                        <div class=\"modal-footer\">
+                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>
+                            <button type=\"reset\" class=\"btn btn-danger btn-sm\">
+                                <i class=\"fa fa-ban\"></i> Reset
+                            </button>
+                            <button type=\"submit\" class=\"btn btn-primary btn-sm\" >
+                                <i class=\"fa fa-dot-circle-o\"></i> Submit
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    ";
+
+
+
+
+
+
+    $response=$response."<div class=\"row\"><div class=\"col-md-4\" data-toggle=\"modal\" data-target=\"#scrollmodal\">
     <aside class=\"profile-nav alt\">
         <section class=\"card \">
             <div class=\"card-header user-header alt bg-dark\" style=\"background-image: url('images/addProd.png'); background-repeat: no-repeat;background-size: cover;\" >
@@ -91,10 +108,7 @@ function getProviderPage(){
 
 
         <ul class=\"list-group list-group-flush\">
-            <li class=\"list-group-item\">
-                <a href=\"#\"> <i class=\"fa fa-dollar\"></i> Edit </a>
-            </li>
-            <li class=\"list-group-item\">
+            <li class=\"list-group-item\" onclick='deleteProvider($prod[0])'>
                 <a href=\"#\"> <i class=\"fa fa-tasks\"></i> Delete </a>
             </li>
         </ul>
@@ -126,6 +140,11 @@ function arrangeProviderToSelect(){
     }
     $data=$data."</select>";
     echo $data;
+}
 
-
+function deleteProvider($id){
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    $sql = "DELETE FROM `provider` WHERE id=".$id;
+    mysqli_query($bdd, $sql);
 }

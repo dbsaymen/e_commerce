@@ -2,22 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: developper
- * Date: 21/01/2019
- * Time: 00:32
+ * Date: 22/01/2019
+ * Time: 00:57
  */
 include 'connectSQL.php';
 
-addProviderMain();
 
-function addProviderMain(){
-    $target_file=uploadIMG();
-    addProvider($_POST["text-input"],$_POST["textarea-input"],$target_file);
+
+addProductMain();
+function addProductMain(){
+    $name=$_POST["Name"];
+    $price=$_POST["Price"];
+    $provider=(int)$_POST["provider"];
+    $descriptions=$_POST["textarea-input"];
+    $details=$_POST["Details-input"];
+    $catId=(int)$_POST["category"];
+    $id=(int)$_POST["selected_product_to_update"];
+
+    if($_FILES["img-input"]["name"]=="" ){
+        $optionImg="";
+    }else{
+        $optionImg=",`img_url`='".uploadIMG()."'";
+    }
+    $sql="UPDATE `products` SET `NAME`='$name',`price`=$price,`provider`=$provider,`description`='$descriptions' $optionImg,`details`='$details',`category_id`=$catId WHERE `id`=$id;";
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    mysqli_query($bdd, $sql);
+
     header("Location: ../admin/adminPanel");
+
 }
-
-
-
-
 function uploadIMG(){
     $target_dir = "uploads/";
     $newName=generateRandomString();
@@ -65,8 +79,6 @@ function uploadIMG(){
     $target_file="../../php/".$target_file;
     return $target_file;
 }
-
-
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -76,11 +88,10 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
-
-function addProvider($name,$description,$imgUrl){
-        $Mysql = new myDataBase();
-        $bdd= $Mysql->connect();
-        $sql = "INSERT INTO `provider`(`NAME`, `description`, `img_url`) VALUES (\"$name\",\"$description\",\"$imgUrl\")";
-        echo($sql);
-        mysqli_query($bdd, $sql);
+function addProduct($name,$price,$rating,$stock,$provider,$description,$imgUrl,$details,$category_id,$active){
+    $Mysql = new myDataBase();
+    $bdd= $Mysql->connect();
+    $sql = "INSERT INTO `products`(`NAME`, `price`, `rating`, `stock`, `provider`, `description`, `img_url`, `details`, `category_id`, `active`) VALUES (\"$name\",\"$price\",\"$rating\",\"$stock\",\"$provider\",\"$description\",\"$imgUrl\",\"$details\",\"$category_id\",\"$active\")";
+    echo($sql);
+    mysqli_query($bdd, $sql);
 }
