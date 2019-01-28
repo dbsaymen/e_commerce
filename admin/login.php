@@ -8,8 +8,10 @@
 
 include '../php/connectSQL.php';
 session_start();
+
 if(isset($_POST["uname"]) && isset($_POST["psw"])){
     $auth=authentification($_POST['uname'],$_POST['psw']);
+    var_dump($auth);
     if($auth["auth"]){
         $_SESSION["info"]=$auth[0];
         header('Location: adminPanel/index.php');

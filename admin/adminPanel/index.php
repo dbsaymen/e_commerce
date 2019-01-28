@@ -87,7 +87,10 @@ if(!isset($_SESSION['info'])){
                     <a id="ProductManager" href="#" onclick="ProductManagerBtn()"> <i class="menu-icon fa fa-tasks"></i>Products Manager</a>
                 </li>
                 <li>
-                    <a id="UsersManager" href="#"> <i class="menu-icon fa fa-group"></i>Users Manager </a>
+                    <a id="UsersManager" href="#" onclick="UsersManagerBtn()"> <i class="menu-icon fa fa-group"></i>Users Manager </a>
+                </li>
+                <li>
+                    <a id="UsersManager" href="#" onclick="AdminsManagerBtn()"> <i class="menu-icon fa fa-group"></i>Admin Manager </a>
                 </li>
                 <li>
                     <a id="UsersManager" href="#" onclick="ProvidersManager()"> <i class="menu-icon fa fa-group"></i>Providers Manager</a>
@@ -96,7 +99,10 @@ if(!isset($_SESSION['info'])){
                     <a id="CategoryManager" href="#" onclick="CategoryManagerBtn()"> <i class="menu-icon fa fa-code-fork"></i>Category Manager </a>
                 </li>
                 <li>
-                    <a id="ConfigManager" href="#"> <i class="menu-icon fa fa-cogs"></i>Config. </a>
+                    <a id="ConfigManager" href="#" onclick="ConfigManagerBtn()"> <i class="menu-icon fa fa-cogs"></i>Config. </a>
+                </li>
+                <li>
+                    <a id="ConfigManager" href="../"> <i class="menu-icon fa fa-cogs"></i>Logout</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

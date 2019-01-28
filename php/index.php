@@ -1,10 +1,12 @@
 <?php
 include 'connectSQL.php';
 include 'fetchProducts.php';
-include 'fetchViewData.php';
 include 'fetchCategory.php';
 include 'fetchProviders.php';
-//include 'updateProducts.php';
+include 'fetchUsers.php';
+include 'fetchAdmins.php';
+include 'fetchConfig.php';
+
 
 $baseUrl="http://localhost/shop/php/index.php?=";
 $requestUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -18,8 +20,27 @@ if($urlParams[0]=="products"){
         getProducts();
     }
 }
+if($urlParams[0]=="providers"){
+    if(isset($urlParams[1])){
+        getProviderByID((int)$urlParams[1]);
+    }else{
+        getProviderPage();
+    }
+}
 if($urlParams[0]=="users"){
     getUsers();
+}
+if($urlParams[0]=="updateActiveStatusUser"){
+    updateActiveStatusUser((int)$urlParams[2],(int)$urlParams[1]);
+}
+if($urlParams[0]=="deleteUser"){
+    deleteUser((int)$urlParams[1]);
+}
+if($urlParams[0]=="Admins"){
+    getAdmins();
+}
+if($urlParams[0]=="deleteAdmin"){
+    deleteAdmin((int)$urlParams[1]);
 }
 if($urlParams[0]=="deleteProduct"){
     deleteProduct((int)$urlParams[1]);
@@ -46,20 +67,18 @@ if($urlParams[0]=="AddCategory"){
         AddCategory(urldecode($urlParams[1]),(int)$urlParams[2]);
     }
 }
-if($urlParams[0]=="ProviderPage"){
-    getProviderPage();
-}
 if($urlParams[0]=="updateActiveStatus"){
     updateActiveStatus((int)$urlParams[2],(int)$urlParams[1]);
 }
 if($urlParams[0]=="updatadeSalesStatus"){
     updatadeSalesStatus((int)$urlParams[2],(int)$urlParams[1],(int)$urlParams[3]);
 }
-if($urlParams[0]=="updateProduct"){
 
-}
 if($urlParams[0]=="deleteProduct"){
     if($urlParams[1]){
         deleteProductById((int)$urlParams[1]);
     }
+}
+if($urlParams[0]=="config"){
+    fetchConfig();
 }

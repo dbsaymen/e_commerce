@@ -186,8 +186,12 @@ function getProducts(){
              $inSales="";
          }
 
-
-
+         $sizes="";
+         $colors="";
+         foreach ($size as $s){
+             $sizes=$sizes."<span class=\"badge badge-success pull-right\" style='margin-right: 5px; height: 22px;width: 22px;'>$s[1]</span>";
+             $colors=$colors."<span class=\"badge badge-success pull-right\" style='background-color: $s[3];height: 22px;width: 22px; margin-right: 5px;'>-</span>";
+         }
             $response=$response."
     <div class=\"col-md-4\">
         <aside class=\"profile-nav alt\">
@@ -216,10 +220,10 @@ function getProducts(){
                     <a href=\"#\"> <i class=\"fa fa-dollar\"></i> category <span class=\"badge badge-primary pull-right\">$category[0]</span></a>
                 </li>
                 <li class=\"list-group-item\">
-                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>size <span class=\"badge badge-primary pull-right\">0</span></a>
+                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>size $sizes</a>
                 </li>
                 <li class=\"list-group-item\">
-                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>Color <span class=\"badge badge-primary pull-right\">0</span></a>
+                    <a href=\"#\"> <i class=\"fa fa-dollar\"></i>Color $colors</a>
                 </li>
                 <li class=\"list-group-item\">
                     <a href=\"#\"> <i class=\"fa fa-dollar\"></i>review <span class=\"badge badge-primary pull-right\">0</span></a>

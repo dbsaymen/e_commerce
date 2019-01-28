@@ -88,10 +88,3 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
-function addProduct($name,$price,$rating,$stock,$provider,$description,$imgUrl,$details,$category_id,$active){
-    $Mysql = new myDataBase();
-    $bdd= $Mysql->connect();
-    $sql = "INSERT INTO `products`(`NAME`, `price`, `rating`, `stock`, `provider`, `description`, `img_url`, `details`, `category_id`, `active`) VALUES (\"$name\",\"$price\",\"$rating\",\"$stock\",\"$provider\",\"$description\",\"$imgUrl\",\"$details\",\"$category_id\",\"$active\")";
-    echo($sql);
-    mysqli_query($bdd, $sql);
-}

@@ -228,10 +228,101 @@ function deleteProvider(id){
 }
 function ProvidersManager(){
     var xhr=getXMLHttpRequest();
-    xhr.open("GET","http://localhost/shop/php/index.php?=ProviderPage",true);
+    xhr.open("GET","http://localhost/shop/php/index.php?=providers",true);
     xhr.send();
     xhr.onreadystatechange = function () {
         if(xhr.readyState == 4 && xhr.status == 200) {
+            var area= document.getElementById("managerArea");
+            area.innerHTML=xhr.responseText;
+        }
+    };
+}
+function updateProvider(id){
+    var area= document.getElementById("selected_provider_to_update");
+    area.value=id;
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=providers/"+id,true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        var json = JSON.parse(xhr.responseText);
+        document.getElementById("update_Name-input").value=json[1];
+        document.getElementById("update_Name-input").innerText=json[1];
+        document.getElementById("update_description-input").value=json[2];
+        document.getElementById("update_description-input").innerText=json[2];
+    }
+}
+/*----------- Users ----------*/
+function UsersManagerBtn(){
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=users",true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var area= document.getElementById("managerArea");
+            area.innerHTML=xhr.responseText;
+        }
+    };
+}
+function updatadeActiveStatusUser(id){
+    var isChecked=1;
+    if(document.getElementById("opt"+id).checked){
+        isChecked=0
+    }
+    var xhr=getXMLHttpRequest();
+    xhr.open("POST","http://localhost/shop/php/index.php?=updateActiveStatusUser/"+id+"/"+isChecked,true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            alert("Updated!");
+            UsersManagerBtn();
+        }
+    };
+}
+function deleteUser(id){
+    if(confirm("Delete this User?")) {
+        var xhr = getXMLHttpRequest();
+        xhr.open("GET", "http://localhost/shop/php/index.php?=deleteUser/" + id, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert("Deleted!");
+                UsersManagerBtn();
+            }
+        };
+    }
+}
+/*----------- admins ----------*/
+function AdminsManagerBtn(){
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=Admins",true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var area= document.getElementById("managerArea");
+            area.innerHTML=xhr.responseText;
+        }
+    };
+}
+function deleteAdmin(id){
+    if(confirm("Delete this admin?")) {
+        var xhr = getXMLHttpRequest();
+        xhr.open("GET", "http://localhost/shop/php/index.php?=deleteAdmin/" + id, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert("Deleted!");
+                AdminsManagerBtn();
+            }
+        };
+    }
+}
+/*----------- Config ----------*/
+function ConfigManagerBtn(){
+    var xhr=getXMLHttpRequest();
+    xhr.open("GET","http://localhost/shop/php/index.php?=config",true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var area= document.getElementById("managerArea");
             area.innerHTML=xhr.responseText;
         }
